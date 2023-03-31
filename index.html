@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <body>
+    <div class="container">
     <div class="calculator-container">
 
         <div class="equation-container">
-            <p id="equation">50 + 50+</p>
-            <p id="result">100</p>
+            <p id="equation">0</p>
+            <p id="result">ㅤ</p>
             
             <div class="line-three">
                 <select id="history">
@@ -30,7 +31,7 @@
                     <option id="history-nine"></option>
                     <option id="history-ten"></option>
                 </select>
-                <button id="delete-button">
+                <button id="delete-button" onclick="DeleteSign()">
                     <i class="fa-solid fa-delete-left"></i>
                 </button>
             </div>
@@ -39,39 +40,40 @@
         <div class="buttons">
             <div class="buttons-container">
             <div id="buttons-line-one">
-                <button id="clear-sign">C</button>
-                <button id="parentheses-sign">±</button>
-                <button id="percent-sign">%</button>
+                <button id="clear-sign" onclick="ClearSign()">C</button>
+                <button id="parentheses-sign" onclick="ParenthesesSign()">±</button>
+                <button id="percent-sign" onclick="PercentSign()">%</button>
             </div>
             <div id="buttons-line-two">
-                <button id="number-seven">7</button>
-                <button id="number-eight">8</button>
-                <button id="number-nine">9</button>
+                <button id="number-seven" onclick="Nseven()">7</button>
+                <button id="number-eight" onclick="Neight()">8</button>
+                <button id="number-nine" onclick="Nnine()">9</button>
             </div>
             <div id="buttons-line-three">
-                <button id="number-four">4</button>
-                <button id="number-five">5</button>
-                <button id="number-six">6</button>
+                <button id="number-four" onclick="Nfour()">4</button>
+                <button id="number-five" onclick="Nfive()">5</button>
+                <button id="number-six" onclick="Nsix()">6</button>
             </div>
             <div id="buttons-line-four">
-                <button id="number-one">1</button>
-                <button id="number-two">2</button>
-                <button id="number-three">3</button>
+                <button id="number-one" onclick="None()">1</button>
+                <button id="number-two" onclick="Ntwo()">2</button>
+                <button id="number-three" onclick="Nthree()">3</button>
             </div>
             <div id="buttons-line-five">
-                <button id="number-zero">0</button>
-                <button id="dot-sign"><strong>.</strong></button>
+                <button id="number-zero" onclick="Nzero()">0</button>
+                <button id="dot-sign" onclick="DotSign()"><strong>.</strong></button>
             </div>
             </div>
             <div id="buttons-line-six">
-                <button id="divide-sign">÷</button>
-                <button id="multiplication-sign">x</button>
-                <button id="minus-sign">−</button>
-                <button id="plus-sign">+</button>
-                <button id="equal-sign">=</button>
+                <button id="divide-sign" onclick="DivideSign()">÷</button>
+                <button id="multiplication-sign" onclick="MultiplicationSign()">x</button>
+                <button id="minus-sign" onclick="MinusSign()">−</button>
+                <button id="plus-sign" onclick="PlusSign()">+</button>
+                <button id="equal-sign" onclick="EqualSign()">=</button>
             </div>
         </div>
 
     </div>
+</div>
 </body>
 </html>
