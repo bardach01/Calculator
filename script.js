@@ -1,22 +1,31 @@
 window.onload = function() {
-    //const z = document.getElementById("equation");
-    //const x = "";
-    //const y = x.slice(-1);
-    //if(y == "+", y == "-", y == "*", y == "/", y == "%") {
-    //document.getElementById("equation").innerHTML = "hello";
+
 }
 let $parenthesesOn = "0";
-function ParenthesesSign() {
-    let firstEquation = document.getElementById("equation");
-    let convertedEquation = firstEquation.innerText;
-    if ($parenthesesOn == "0"){
-        $parenthesesOn = "1";
-        document.getElementById("equation").innerHTML = convertedEquation + "("; 
-    } else {
-        $parenthesesOn = "0";
-        document.getElementById("equation").innerHTML = convertedEquation + ")"; 
-        }
-}
+
+/* History */
+let $historyOneOn = "0";
+let $historyTwoOn = "0";
+let $historyThreeOn = "0";
+let $historyFourOn = "0";
+let $historyFiveOn = "0";
+let $historySixOn = "0";
+let $historySevenOn = "0";
+let $historyEightOn = "0";
+let $historyNineOn = "0";
+let $historyTenOn = "0";
+
+let $historyOne = " ";
+let $historyTwo = " ";
+let $historyThree = " ";
+let $historyFour = " ";
+let $historyFive = " ";
+let $historySix = " ";
+let $historySeven = " ";
+let $historyEight = " ";
+let $historyNine = " ";
+let $historyTen = " ";
+
 /* Signs */
 function PlusSign() {
     let firstEquation = document.getElementById("equation");
@@ -102,12 +111,138 @@ function PercentSign() {
     console.log("Percent Sign Has Been Added."); 
     }
 }
+function ParenthesesSign() {
+    let firstEquation = document.getElementById("equation");
+    let convertedEquation = firstEquation.innerText;
+    if ($parenthesesOn == "0"){
+        $parenthesesOn = "1";
+        document.getElementById("equation").innerHTML = convertedEquation + "("; 
+    } else {
+        $parenthesesOn = "0";
+        document.getElementById("equation").innerHTML = convertedEquation + ")"; 
+        }
+}
 function EqualSign() {
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
+    let checkEquationEnd = convertedEquation.endsWith("+") || 
+    convertedEquation.endsWith("-") || 
+    convertedEquation.endsWith("*") ||
+    convertedEquation.endsWith(".") ||
+    convertedEquation.endsWith("/") ||
+    convertedEquation.endsWith("%");
+    if (checkEquationEnd == false){
+
     document.getElementById("result").innerHTML = "ㅤ";
     document.getElementById("result").style.marginBottom = "0px";
     document.getElementById("equation").innerHTML = eval(convertedEquation);
+    if ($historyTenOn == 1){
+        document.getElementById("history-one").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        document.getElementById("history-two").innerHTML = " ";
+        document.getElementById("history-three").innerHTML = " ";
+        document.getElementById("history-four").innerHTML = " ";
+        document.getElementById("history-five").innerHTML = " ";
+        document.getElementById("history-six").innerHTML = " ";
+        document.getElementById("history-seven").innerHTML = " ";
+        document.getElementById("history-eight").innerHTML = " ";
+        document.getElementById("history-nine").innerHTML = " ";
+        document.getElementById("history-ten").innerHTML = " ";
+        $historyOneOn = "0";
+        $historyTwoOn = "0";
+        $historyThreeOn = "0";
+        $historyFourOn = "0";
+        $historyFiveOn = "0";
+        $historySixOn = "0";
+        $historySevenOn = "0";
+        $historyEightOn = "0";
+        $historyNineOn = "0";
+        $historyTenOn = "0";
+    }
+    if ($historyNineOn == 1){
+        document.getElementById("history-ten").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "3";
+        $historySixOn = "3";
+        $historySevenOn = "3";
+        $historyEightOn = "3";
+        $historyNineOn = "3";
+        $historyTenOn = "1";
+    }
+    if ($historyEightOn == 1){
+        document.getElementById("history-nine").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "3";
+        $historySixOn = "3";
+        $historySevenOn = "3";
+        $historyEightOn = "3";
+        $historyNineOn = "1";
+    }
+    if ($historySevenOn == 1){
+        document.getElementById("history-eight").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "3";
+        $historySixOn = "3";
+        $historySevenOn = "3";
+        $historyEightOn = "1";
+    }
+    if ($historySixOn == 1){
+        document.getElementById("history-seven").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "3";
+        $historySixOn = "3";
+        $historySevenOn = "1";
+    }
+    if ($historyFiveOn == 1){
+        document.getElementById("history-six").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "3";
+        $historySixOn = "1";
+    }
+    if ($historyFourOn == 1){
+        document.getElementById("history-five").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "3";
+        $historyFiveOn = "1";
+    }
+    if ($historyThreeOn == 1){
+        document.getElementById("history-four").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "3";
+        $historyFourOn = "1";
+    }
+    if ($historyTwoOn == 1){
+        document.getElementById("history-three").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "3";
+        $historyTwoOn = "3";
+        $historyThreeOn = "1";
+    }
+    if ($historyOneOn == 1){
+        document.getElementById("history-two").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyTwoOn = "1";
+    }
+    if ($historyOneOn == 0){
+        document.getElementById("history-one").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
+        $historyOneOn = "1";
+    }
+  }
 }
 function DeleteSign(){
     let Equation = document.getElementById("equation");
@@ -255,6 +390,7 @@ function Nnine(){
         console.log("Number 9 Has Been Added.");
     }
 }
+
 /* Checks For Fonts */
 setInterval(function () { 
     let Equation = document.getElementById("equation");
@@ -269,45 +405,49 @@ setInterval(function () {
     if (checkLength == 24) {
         document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1)}     
 }, 10);
+
 /* Checks For Equals */
 setInterval(function () { 
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    let checkEquationEnd = convertedEquation.includes("+") || 
+    let checkEquationIncludes = convertedEquation.includes("+") || 
     convertedEquation.includes("-") || 
     convertedEquation.includes("*") ||
     convertedEquation.includes(".") ||
     convertedEquation.includes("/") ||
     convertedEquation.includes("%");
-    if (checkEquationEnd == true){
+    if (checkEquationIncludes == true , convertedEquation.startsWith("-") == false){
         document.getElementById("result").innerHTML = eval(convertedEquation),
         document.getElementById("result").style.marginBottom = "36px"}
 }, 10);
+
 /* Checks For Equals If No Sign In The End */
 setInterval(function () { 
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    let checkEquationEnd = convertedEquation.includes("+") || 
+    let checkEquationIncludes = convertedEquation.includes("+") || 
     convertedEquation.includes("-") || 
     convertedEquation.includes("*") ||
     convertedEquation.includes(".") ||
     convertedEquation.includes("/") ||
     convertedEquation.includes("%");
-    if (checkEquationEnd == false){
+    if (checkEquationIncludes == false){
         document.getElementById("result").innerHTML = "ㅤ",
         document.getElementById("result").style.marginBottom = "0px"}
 }, 10);
+
 /* Checks For Equals If There Is a Sign In The End */
 setInterval(function () { 
-let Equation = document.getElementById("equation");
-let convertedEquation = Equation.innerText;
-let checkEquationEnd = convertedEquation.endsWith("+") || 
-convertedEquation.endsWith("-") || 
-convertedEquation.endsWith("*") ||
-convertedEquation.endsWith(".") ||
-convertedEquation.endsWith("/") ||
-convertedEquation.endsWith("%");
-if (checkEquationEnd == true){
-    document.getElementById("result").innerHTML = "ㅤ";
+    let Equation = document.getElementById("equation");
+    let convertedEquation = Equation.innerText;
+    let checkEquationEnd = convertedEquation.endsWith("+") || 
+    convertedEquation.endsWith("-") || 
+    convertedEquation.endsWith("*") ||
+    convertedEquation.endsWith(".") ||
+    convertedEquation.endsWith("/") ||
+    convertedEquation.endsWith("%");
+    if (checkEquationEnd == true){
+    document.getElementById("result").innerHTML = "ㅤ",
     document.getElementById("result").style.marginBottom = "0px"}
 }, 10);
+
