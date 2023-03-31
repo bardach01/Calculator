@@ -1,0 +1,165 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+body{
+    background-color: rgb(48, 48, 48);
+    display: flex;
+}
+.calculator-container{
+    background-color: rgb(0, 0, 0);
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 650px;
+    min-height: 650px;
+    padding-top: 10px;
+    margin-left: 40%;
+    margin-top: 10%;
+    border-radius: 50px;
+    border: 5px solid rgb(0, 132, 255);
+    box-shadow: 10px 10px 50px rgb(0, 0, 0);
+    flex-grow: 1;
+}
+/* equation and result */
+#equation, #result{
+    color: white;
+}
+#equation{
+    margin-left: 40px;
+    font-size: 40px;
+}
+#result{
+    margin-left: 40px;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.line-three{
+    margin-left: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#history{
+    border: none;
+    width: 250px;
+    background-color: black;
+    color: rgb(219, 219, 219);
+}
+#history:hover{
+    transition: 0.2s;
+    color: rgb(0, 132, 255);
+}
+#delete-button{
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(219, 219, 219);
+    font-size: 20px;
+    margin-left: 30px;
+}
+#delete-button:hover{
+    transition: 0.2s;
+    color: rgb(0, 132, 255);
+}
+/* container buttons */
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+.buttons-container{
+    display: block;
+}
+/* line one */
+#buttons-line-one button{
+    margin: 5px;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(145, 145, 145);
+    color: rgb(0, 0, 0);
+}
+#buttons-line-one button:hover{
+    transition: 0.2s;
+    background-color: rgb(214, 214, 214);
+}
+#percent-sign{
+    width: 70px;
+}
+/* line two */
+#buttons-line-two button{
+    margin: 5px;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(39, 39, 39);
+    color: aliceblue;
+}
+#buttons-line-two button:hover{
+    transition: 0.2s;
+    background-color: rgb(194, 194, 194);
+}
+/* line three */
+#buttons-line-three button{
+    margin: 5px;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(39, 39, 39);
+    color: aliceblue;
+}
+#buttons-line-three button:hover{
+    transition: 0.2s;
+    background-color: rgb(194, 194, 194);
+}
+/* line four */
+#buttons-line-four button{
+    margin: 5px;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(39, 39, 39);
+    color: aliceblue;
+}
+#buttons-line-four button:hover{
+    transition: 0.2s;
+    background-color: rgb(194, 194, 194);
+}
+/* line five */
+#buttons-line-five button{
+    margin: 5px;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(39, 39, 39);
+    color: aliceblue;
+}
+#number-zero{
+    width: 155px;
+}
+#dot-sign{
+    width: 70px;
+}
+#buttons-line-five button:hover{
+    transition: 0.2s;
+    background-color: rgb(194, 194, 194);
+}
+/* line six */
+#buttons-line-six{
+    margin-top: 8px;
+    margin-left: 10px;
+}
+#buttons-line-six button{
+    margin-bottom: 10px;
+    padding: 29px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(0, 132, 255);
+    color: aliceblue;
+    display: flex;
+}
+#buttons-line-six button:hover{
+    transition: 0.2s;
+    background-color: rgb(221, 221, 221);
+    color: rgb(0, 132, 255);
+}
