@@ -37,8 +37,8 @@ function PlusSign() {
     convertedEquation.endsWith("/") ||
     convertedEquation.endsWith("%");
     if (checkEquationEnd == false){
-    document.getElementById("equation").innerHTML = convertedEquation + "+"; 
-    console.log("Plus Sign Has Been Added.");
+        document.getElementById("equation").innerHTML = convertedEquation + "+"; 
+        console.log("Plus Sign Has Been Added.");
     }
 }
 function MinusSign() {
@@ -100,7 +100,7 @@ function DivideSign() {
 function PercentSign() {
     let firstEquation = document.getElementById("equation");
     let convertedEquation = firstEquation.innerText;
-    let checkEquationEnd = convertedEquation.endsWith(".") || 
+    let checkEquationEnd = convertedEquation.endsWith(".") ||
     convertedEquation.endsWith("-") || 
     convertedEquation.endsWith("*") ||
     convertedEquation.endsWith(".") ||
@@ -113,14 +113,25 @@ function PercentSign() {
 }
 function ParenthesesSign() {
     let firstEquation = document.getElementById("equation");
-    let convertedEquation = firstEquation.innerText;
-    if ($parenthesesOn == "0"){
-        $parenthesesOn = "1";
-        document.getElementById("equation").innerHTML = convertedEquation + "("; 
-    } else {
-        $parenthesesOn = "0";
-        document.getElementById("equation").innerHTML = convertedEquation + ")"; 
-        }
+    let convertedEquation = firstEquation.innerText;   
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case true:
+            if ($parenthesesOn == "0"){
+                $parenthesesOn = "1";
+                document.getElementById("equation").innerHTML = "(";
+            }
+            break;
+        case false:
+            if ($parenthesesOn == "0"){
+                $parenthesesOn = "1";
+                document.getElementById("equation").innerHTML = convertedEquation + "(";
+            } else {
+                    $parenthesesOn = "0";
+                    document.getElementById("equation").innerHTML = convertedEquation + ")";
+                }
+            break;
+    }
 }
 function EqualSign() {
     let Equation = document.getElementById("equation");
@@ -273,121 +284,241 @@ function ClearSign(){
 function Nzero(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 0; 
-    console.log("Number 0 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 0;    
-        console.log("Number 0 Has Been Added.");
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 0;
+            console.log("Number 0 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 0;
+            console.log("Number 0 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 0;
+            console.log("Number 0 Has Been Added.");
+            break;
+            }
     }
 }
 function None(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 1; 
-    console.log("Number 1 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 1;  
-        console.log("Number 1 Has Been Added.");  
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 1;
+            console.log("Number 1 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 1;
+            console.log("Number 1 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 1;
+            console.log("Number 1 Has Been Added.");
+            break;
+            }
     }
 }
 function Ntwo(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 2;
-    console.log("Number 2 Has Been Added.");
-    } 
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 2;    
-        console.log("Number 2 Has Been Added.");
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 2;
+            console.log("Number 2 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 2;
+            console.log("Number 2 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 2;
+            console.log("Number 2 Has Been Added.");
+            break;
+            }
     }
 }
 function Nthree(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 3; 
-    console.log("Number 3 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 3;
-        console.log("Number 3 Has Been Added.");
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 3;
+            console.log("Number 3 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 3;
+            console.log("Number 3 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 3;
+            console.log("Number 3 Has Been Added.");
+            break;
+            }
     }
 }
 function Nfour(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 4; 
-    console.log("Number 4 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 4;
-        console.log("Number 4 Has Been Added.");    
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 4;
+            console.log("Number 4 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 4;
+            console.log("Number 4 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 4;
+            console.log("Number 4 Has Been Added.");
+            break;
+            }
     }
 }
 function Nfive(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 5; 
-    console.log("Number 5 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 5;    
-        console.log("Number 5 Has Been Added.");
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 5;
+            console.log("Number 5 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 5;
+            console.log("Number 5 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 5;
+            console.log("Number 5 Has Been Added.");
+            break;
+            }
     }
 }
 function Nsix(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 6;
-    console.log("Number 6 Has Been Added."); 
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 6;   
-        console.log("Number 6 Has Been Added.");  
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 6;
+            console.log("Number 6 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 6;
+            console.log("Number 6 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 6;
+            console.log("Number 6 Has Been Added.");
+            break;
+            }
     }
 }
 function Nseven(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 7; 
-    console.log("Number 7 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 7;  
-        console.log("Number 7 Has Been Added.");  
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 7;
+            console.log("Number 7 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 7;
+            console.log("Number 7 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 7;
+            console.log("Number 7 Has Been Added.");
+            break;
+            }
     }
 }
 function Neight(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 8; 
-    console.log("Number 8 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 8;
-        console.log("Number 8 Has Been Added.");    
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 8;
+            console.log("Number 8 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 8;
+            console.log("Number 8 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 8;
+            console.log("Number 8 Has Been Added.");
+            break;
+            }
     }
 }
 function Nnine(){
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
-    if(convertedEquation.startsWith("0") == false){
-    document.getElementById("equation").innerHTML = convertedEquation + 9; 
-    console.log("Number 9 Has Been Added.");
-    }
-    if(convertedEquation.startsWith("0") == true){
-        document.getElementById("equation").innerHTML = 9;    
-        console.log("Number 9 Has Been Added.");
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
+    switch (checkEquationStarts){
+        case false:
+            document.getElementById("equation").innerHTML = convertedEquation + 9;
+            console.log("Number 9 Has Been Added.");
+            break;
+        case true:
+            if (checkEquationStartsPoint == false){
+            document.getElementById("equation").innerHTML = 9;
+            console.log("Number 9 Has Been Added.");
+            break; 
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("equation").innerHTML = convertedEquation + 9;
+            console.log("Number 9 Has Been Added.");
+            break;
+            }
     }
 }
 
@@ -405,11 +536,12 @@ setInterval(function () {
     if (checkLength == 24) {
         document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1)}     
 }, 10);
-
-/* Checks For Equals */
+/*
 setInterval(function () { 
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationStarts = convertedEquation.startsWith("0");
     let checkEquationIncludes = convertedEquation.includes("+") || 
     convertedEquation.includes("-") || 
     convertedEquation.includes("*") ||
@@ -420,6 +552,34 @@ setInterval(function () {
         document.getElementById("result").innerHTML = eval(convertedEquation),
         document.getElementById("result").style.marginBottom = "36px"}
 }, 10);
+*/
+/* Checks For Equals */
+setInterval(function () { 
+    let Equation = document.getElementById("equation");
+    let convertedEquation = Equation.innerText;
+    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+    let checkEquationIncludes = convertedEquation.includes("+") || 
+    convertedEquation.includes("-") || 
+    convertedEquation.includes("*") ||
+    convertedEquation.includes(".") ||
+    convertedEquation.includes("/") ||
+    convertedEquation.includes("%");
+    switch (checkEquationIncludes){
+        case true:
+            if (checkEquationStartsPoint == true)
+            {
+            document.getElementById("result").innerHTML = " ";
+            document.getElementById("result").style.marginBottom = "80px";
+            break;
+            }
+        case true:
+            if (convertedEquation.startsWith("-") == false){
+                document.getElementById("result").innerHTML = eval(convertedEquation);
+                document.getElementById("result").style.marginBottom = "36px";
+            break;
+            }
+        }
+}, 1);
 
 /* Checks For Equals If No Sign In The End */
 setInterval(function () { 
