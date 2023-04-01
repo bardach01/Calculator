@@ -106,31 +106,56 @@ function PercentSign() {
     convertedEquation.endsWith(".") ||
     convertedEquation.endsWith("/") ||
     convertedEquation.endsWith("%");
-    if (checkEquationEnd == false){
+    switch (checkEquationEnd){
+    case false:
     document.getElementById("equation").innerHTML = convertedEquation + "%";
     console.log("Percent Sign Has Been Added."); 
+    break;
     }
 }
 function ParenthesesSign() {
     let firstEquation = document.getElementById("equation");
     let convertedEquation = firstEquation.innerText;   
     let checkEquationStarts = convertedEquation.startsWith("0");
+    let checkEquationStartsPN = convertedEquation.startsWith("0.0") ||
+    convertedEquation.startsWith("0.1") ||
+    convertedEquation.startsWith("0.2") ||
+    convertedEquation.startsWith("0.3") ||
+    convertedEquation.startsWith("0.4") ||
+    convertedEquation.startsWith("0.5") ||
+    convertedEquation.startsWith("0.6") ||
+    convertedEquation.startsWith("0.7") ||
+    convertedEquation.startsWith("0.8") ||
+    convertedEquation.startsWith("0.9");
     switch (checkEquationStarts){
+        case true:
+            if (checkEquationStartsPN == true && $parenthesesOn == "0"){
+                document.getElementById("equation").innerHTML = convertedEquation + "(";
+                $parenthesesOn = "1";
+            break;
+            }
+        case true:
+            if (checkEquationStartsPN == false && $parenthesesOn == "1"){
+                $parenthesesOn = "0";
+                document.getElementById("equation").innerHTML = convertedEquation + ")";
+            break;
+                }
         case true:
             if ($parenthesesOn == "0"){
                 $parenthesesOn = "1";
                 document.getElementById("equation").innerHTML = "(";
-            }
             break;
+            }
         case false:
             if ($parenthesesOn == "0"){
                 $parenthesesOn = "1";
                 document.getElementById("equation").innerHTML = convertedEquation + "(";
+                break;
             } else {
                     $parenthesesOn = "0";
                     document.getElementById("equation").innerHTML = convertedEquation + ")";
+                    break;
                 }
-            break;
     }
 }
 function EqualSign() {
@@ -142,8 +167,17 @@ function EqualSign() {
     convertedEquation.endsWith(".") ||
     convertedEquation.endsWith("/") ||
     convertedEquation.endsWith("%");
-    if (checkEquationEnd == false){
 
+    let checkEquationIncludes = convertedEquation.includes("+") || 
+    convertedEquation.includes("-") || 
+    convertedEquation.includes("*") ||
+    convertedEquation.includes("/") ||
+    convertedEquation.includes("%");
+    switch (checkEquationEnd){
+    case false:
+        if (checkEquationIncludes == false)
+    break;
+    case false:
     document.getElementById("result").innerHTML = "ㅤ";
     document.getElementById("result").style.marginBottom = "0px";
     document.getElementById("equation").innerHTML = eval(convertedEquation);
@@ -253,6 +287,7 @@ function EqualSign() {
         document.getElementById("history-one").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
         $historyOneOn = "1";
     }
+    break;
   }
 }
 function DeleteSign(){
@@ -536,35 +571,42 @@ setInterval(function () {
     if (checkLength == 24) {
         document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1)}     
 }, 10);
-/*
-setInterval(function () { 
-    let Equation = document.getElementById("equation");
-    let convertedEquation = Equation.innerText;
-    let checkEquationStartsPoint = convertedEquation.startsWith("0.");
-    let checkEquationStarts = convertedEquation.startsWith("0");
-    let checkEquationIncludes = convertedEquation.includes("+") || 
-    convertedEquation.includes("-") || 
-    convertedEquation.includes("*") ||
-    convertedEquation.includes(".") ||
-    convertedEquation.includes("/") ||
-    convertedEquation.includes("%");
-    if (checkEquationIncludes == true , convertedEquation.startsWith("-") == false){
-        document.getElementById("result").innerHTML = eval(convertedEquation),
-        document.getElementById("result").style.marginBottom = "36px"}
-}, 10);
-*/
+
 /* Checks For Equals */
 setInterval(function () { 
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
     let checkEquationStartsPoint = convertedEquation.startsWith("0.");
+
+    let checkEquationStartsPN = convertedEquation.startsWith("0.0") ||
+    convertedEquation.startsWith("0.1") ||
+    convertedEquation.startsWith("0.2") ||
+    convertedEquation.startsWith("0.3") ||
+    convertedEquation.startsWith("0.4") ||
+    convertedEquation.startsWith("0.5") ||
+    convertedEquation.startsWith("0.6") ||
+    convertedEquation.startsWith("0.7") ||
+    convertedEquation.startsWith("0.8") ||
+    convertedEquation.startsWith("0.9");
+
     let checkEquationIncludes = convertedEquation.includes("+") || 
     convertedEquation.includes("-") || 
     convertedEquation.includes("*") ||
-    convertedEquation.includes(".") ||
     convertedEquation.includes("/") ||
     convertedEquation.includes("%");
     switch (checkEquationIncludes){
+        case true:
+            if (convertedEquation.endsWith(".") == true){
+            document.getElementById("result").innerHTML = " ";
+            document.getElementById("result").style.marginBottom = "80px";
+            break;
+            }
+        case true:
+            if(checkEquationStartsPN == true){
+            document.getElementById("result").innerHTML = eval(convertedEquation);
+            document.getElementById("result").style.marginBottom = "36px";
+            break;
+            }
         case true:
             if (checkEquationStartsPoint == true)
             {
@@ -579,7 +621,7 @@ setInterval(function () {
             break;
             }
         }
-}, 1);
+}, 10);
 
 /* Checks For Equals If No Sign In The End */
 setInterval(function () { 
