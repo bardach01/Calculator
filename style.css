@@ -31,6 +31,9 @@ body{
     overflow: hidden;
 }
 /* equation and result */
+#equation-container{
+    position: relative;
+}
 #equation{
     color: white;
 }

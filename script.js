@@ -181,6 +181,8 @@ function EqualSign() {
     document.getElementById("result").innerHTML = "ㅤ";
     document.getElementById("result").style.marginBottom = "0px";
     document.getElementById("equation").innerHTML = eval(convertedEquation);
+    document.getElementById("equation").style.fontSize = "40px";
+    document.getElementById("equation").style.marginBottom = "0px";
     if ($historyTenOn == 1){
         document.getElementById("history-one").innerHTML = `${convertedEquation} = ${eval(convertedEquation)}`;
         document.getElementById("history-two").innerHTML = " ";
@@ -313,6 +315,8 @@ function ClearSign(){
     document.getElementById("result").innerHTML = "ㅤ";
     document.getElementById("result").style.marginBottom = "0px"; 
     console.log("All Numbers Have Been Deleted.");
+    document.getElementById("equation").style.fontSize = "40px";
+    document.getElementById("equation").style.marginBottom = "0px";
     }
 }
 /* Numbers */
@@ -562,15 +566,20 @@ setInterval(function () {
     let Equation = document.getElementById("equation");
     let convertedEquation = Equation.innerText;
     let checkLength = convertedEquation.length;
-    if (checkLength == 15) {
-    document.getElementById("equation").style.fontSize = "25px", 
-    document.getElementById("equation").style.marginBottom = "26px"}
-    if (checkLength == 14) {
-        document.getElementById("equation").style.fontSize = "40px",
-        document.getElementById("equation").style.marginBottom = "0px"}  
-    if (checkLength == 24) {
-        document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1)}     
-}, 10);
+    switch (checkLength){
+        case 24:
+        document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1);
+        break;
+        case 15:
+        document.getElementById("equation").style.fontSize = "25px";
+        document.getElementById("equation").style.marginBottom = "26px";
+        break;
+        case 14:
+        document.getElementById("equation").style.fontSize = "40px";
+        document.getElementById("equation").style.marginBottom = "0px";     
+        break;
+    }  
+}, 1);
 
 /* Checks For Equals */
 setInterval(function () { 
