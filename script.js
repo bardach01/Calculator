@@ -244,6 +244,12 @@ function DeleteSign(){
     ToConvertEquation();
     ToCheckEquationEnd();
     let checkLength = $convertedEquation.length;
+    if($convertedEquation.endsWith(")")){
+        $parenthesesOn = 1; 
+    }
+    if($convertedEquation.endsWith("(")){
+        $parenthesesOn = 0; 
+    }
     if(checkLength != 1){
     document.getElementById("equation").innerHTML = $convertedEquation.slice(0,-1);
     if ($checkEquationEnd == false){
@@ -254,6 +260,7 @@ function DeleteSign(){
     } else if(checkLength == 1){
     document.getElementById("equation").innerHTML = 0;
     if($convertedEquation.startsWith("0") == false){
+    $parenthesesOn = 0;
     console.log("All Numbers Have Been Deleted.");   
     } 
   }
@@ -261,8 +268,11 @@ function DeleteSign(){
 function ClearSign(){
     ToConvertEquation();
     if($convertedEquation.startsWith("0") == false){
+    document.getElementById("equation").style.fontSize = "40px";
+    document.getElementById("equation").style.marginBottom = "0px";
     document.getElementById("equation").innerHTML = 0; 
     document.getElementById("result").innerHTML = "ㅤ";
+    $parenthesesOn = 0;
     console.log("All Numbers Have Been Deleted.");
     }
 }
@@ -310,12 +320,11 @@ function Nnine(){
 
 /* Checks For Fonts */
 setInterval(function () { 
-    let Equation = document.getElementById("equation");
-    let convertedEquation = Equation.innerText;
-    let checkLength = convertedEquation.length;
+    ToConvertEquation();
+    let checkLength = $convertedEquation.length;
     switch (checkLength){
         case 24:
-        document.getElementById("equation").innerHTML = convertedEquation.slice(0,-1);
+        document.getElementById("equation").innerHTML = $convertedEquation.slice(0,-1);
         break;
         case 15:
         document.getElementById("equation").style.fontSize = "25px";
@@ -326,7 +335,7 @@ setInterval(function () {
         document.getElementById("equation").style.marginBottom = "0px";     
         break;
     }  
-}, 1);
+}, 10);
 /* Checks For Equals */
 setInterval(function () { 
     ToConvertEquation();
@@ -337,7 +346,7 @@ setInterval(function () {
         case true:
             if ($convertedEquation.endsWith(".") == true){
             document.getElementById("result").innerHTML = " ";
-            document.getElementById("result").style.marginBottom = "80px";
+            document.getElementById("result").style.marginBottom = "120px";
             break;
             }
         case true:
