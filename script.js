@@ -121,6 +121,7 @@ function ToAddSign(x){
     if ($checkEquationEnd == false){
         document.getElementById("equation").innerHTML = $convertedEquation + x;
         document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+        ToCheckForFonts();
         if (x === "+"){
             console.log(`Plus Sign Has Been Added.`);
         } else if (x === "-"){
@@ -234,7 +235,6 @@ function ToCheckIfNoSign(){
     if (checkEquationIncludes == false){
         document.getElementById("result").innerHTML = "0";
         document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
-        /*document.getElementById("result").style.marginBottom = "0px";*/
 }
 }
 /* Checks For Equals If There Is a Sign In The End */
@@ -244,60 +244,79 @@ function ToCheckIfSignEnd() {
     if ($checkEquationEnd == true){
         document.getElementById("result").innerHTML = "0";
         document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
-    /*document.getElementById("result").style.marginBottom = "0px";*/
-}
+    }
 }
 /* Signs */
 function PlusSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign("+");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function MinusSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign("-");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function DotSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign(".");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function MultiplicationSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign("*");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function DivideSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign("/");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function PercentSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToCheckEquationEnd();
     ToAddSign("/");
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function ParenthesesSign() {
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     let checkEquationStarts = $convertedEquation.startsWith("0");
     ToCheckEquationStartsPN();
     ToCheckIfSignEnd();
@@ -333,7 +352,8 @@ function ParenthesesSign() {
                     ToCheckForEquals();
                     break;
                 }
-    }
+            }
+    }   
 }
 function EqualSign() {
     ToConvertEquation();
@@ -396,8 +416,9 @@ function ClearSign(){
     if($convertedEquation.startsWith("0") == false){
     document.getElementById("equation").style.fontSize = "40px";
     document.getElementById("equation").style.marginBottom = "0px";
-    document.getElementById("equation").innerHTML = 0; 
-    document.getElementById("result").innerHTML = " ";
+    document.getElementById("equation").innerHTML = "0"; 
+    document.getElementById("result").innerHTML = "0";
+    document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
     $parenthesesOn = 0;
     console.log("All Numbers Have Been Deleted.");
     }
@@ -405,81 +426,111 @@ function ClearSign(){
 /* Numbers */
 function Nzero(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(0);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function None(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(1);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Ntwo(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(2);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nthree(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(3);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nfour(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(4);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nfive(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(5);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nsix(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(6);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nseven(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(7);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Neight(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(8);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
 function Nnine(){
     ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    if(checkLength < 23){
     ToAddNumber(9);
     ToCheckIfNoSign();
     ToCheckIfSignEnd();
     ToCheckForEquals();
     ToCheckForFonts();
+    }
 }
