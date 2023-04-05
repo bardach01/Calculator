@@ -120,6 +120,7 @@ function ToHistory(){
 function ToAddSign(x){
     if ($checkEquationEnd == false){
         document.getElementById("equation").innerHTML = $convertedEquation + x;
+        document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
         if (x === "+"){
             console.log(`Plus Sign Has Been Added.`);
         } else if (x === "-"){
@@ -157,41 +158,150 @@ function ToAddNumber(x){
             }
     }
 }
+/* Checks For Fonts */
+function ToCheckForFonts() { 
+    ToConvertEquation();
+    let checkLength = $convertedEquation.length;
+    switch (checkLength){
+        case 24:
+        document.getElementById("equation").innerHTML = $convertedEquation.slice(0,-1);
+        break;
+        case 15:
+        document.getElementById("equation").style.fontSize = "25px";
+        document.getElementById("equation").style.marginBottom = "26px";
+        break;
+        case 14:
+        document.getElementById("equation").style.fontSize = "40px";
+        document.getElementById("equation").style.marginBottom = "0px";     
+        break;
+    }  
+}
+
+/* Checks For Equals */
+function ToCheckForEquals() { 
+    ToConvertEquation();
+    ToCheckEquationStartsPN();
+    CheckEquationIncludesSigns();
+    let checkEquationStartsPoint = $convertedEquation.startsWith("0.");
+    switch ($checkEquationIncludesSigns){
+        case true:
+            if ($convertedEquation.endsWith("(") == true){
+            document.getElementById("result").innerHTML = "0";
+            document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+            break;
+            }
+        case true:
+            if ($convertedEquation.endsWith(".") == true){
+            document.getElementById("result").innerHTML = "0";
+            document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+            break;
+            }
+        case true:
+            if($checkEquationStartsPN == true){
+            document.getElementById("result").innerHTML = eval($convertedEquation);
+            document.getElementById("result").style.color = "rgb(138, 138, 138)";
+            break;
+            }
+        case true:
+            if (checkEquationStartsPoint == true){
+            document.getElementById("result").innerHTML = "0";
+            document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+            break;
+            }
+        case true:
+            if ($convertedEquation.startsWith("-") == false){
+                document.getElementById("result").innerHTML = eval($convertedEquation);
+                document.getElementById("result").style.color = "rgb(138, 138, 138)";
+            break;
+            }
+        case true:
+            if ($convertedEquation.startsWith("-") == true){
+                document.getElementById("result").innerHTML = "0";
+                document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+            break;
+            }    
+        }
+}
+/* Checks For Equals If No Sign */
+function ToCheckIfNoSign(){
+    ToConvertEquation();
+    let checkEquationIncludes = $convertedEquation.includes("+") || 
+    $convertedEquation.includes("-") || 
+    $convertedEquation.includes("*") ||
+    $convertedEquation.includes(".") ||
+    $convertedEquation.includes("/") ||
+    $convertedEquation.includes("%");
+    if (checkEquationIncludes == false){
+        document.getElementById("result").innerHTML = "0";
+        document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+        /*document.getElementById("result").style.marginBottom = "0px";*/
+}
+}
+/* Checks For Equals If There Is a Sign In The End */
+function ToCheckIfSignEnd() { 
+    ToConvertEquation();
+    ToCheckEquationEnd();
+    if ($checkEquationEnd == true){
+        document.getElementById("result").innerHTML = "0";
+        document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
+    /*document.getElementById("result").style.marginBottom = "0px";*/
+}
+}
 /* Signs */
 function PlusSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign("+");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function MinusSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign("-");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function DotSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign(".");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function MultiplicationSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign("*");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function DivideSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign("/");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function PercentSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     ToAddSign("/");
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function ParenthesesSign() {
     ToConvertEquation();
     let checkEquationStarts = $convertedEquation.startsWith("0");
     ToCheckEquationStartsPN();
+    ToCheckIfSignEnd();
+    ToCheckForFonts();
     switch (checkEquationStarts){
         case true:
             if ($checkEquationStartsPN == true && $parenthesesOn == "0"){
@@ -203,6 +313,7 @@ function ParenthesesSign() {
             if ($checkEquationStartsPN == false && $parenthesesOn == "1"){
                 $parenthesesOn = "0";
                 document.getElementById("equation").innerHTML = $convertedEquation + ")";
+                ToCheckForEquals();
             break;
                 }
         case true:
@@ -219,6 +330,7 @@ function ParenthesesSign() {
             } else {
                     $parenthesesOn = "0";
                     document.getElementById("equation").innerHTML = $convertedEquation + ")";
+                    ToCheckForEquals();
                     break;
                 }
     }
@@ -227,6 +339,9 @@ function EqualSign() {
     ToConvertEquation();
     ToCheckEquationEnd();
     CheckEquationIncludesSigns();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
     switch ($checkEquationEnd){
     case false:
         if ($checkEquationIncludesSigns == false)
@@ -234,8 +349,9 @@ function EqualSign() {
     case false:
         document.getElementById("equation").innerHTML = eval($convertedEquation);
         document.getElementById("equation").style.fontSize = "40px";
-        document.getElementById("result").innerHTML = " ";
-        document.getElementById("result").style.marginBottom = "80px";
+        document.getElementById("equation").style.marginBottom = "0px";
+        document.getElementById("result").innerHTML = "0";
+        document.getElementById("result").style.color = "rgba(138, 138, 138, 0)";
         ToHistory();
     break;
   }
@@ -243,6 +359,7 @@ function EqualSign() {
 function DeleteSign(){
     ToConvertEquation();
     ToCheckEquationEnd();
+    ToCheckIfNoSign();
     let checkLength = $convertedEquation.length;
     if($convertedEquation.endsWith(")")){
         $parenthesesOn = 1; 
@@ -252,6 +369,9 @@ function DeleteSign(){
     }
     if(checkLength != 1){
     document.getElementById("equation").innerHTML = $convertedEquation.slice(0,-1);
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
     if ($checkEquationEnd == false){
         console.log(`Number ${$convertedEquation.slice(-1)} Has Been Deleted`); 
         } else {
@@ -259,6 +379,9 @@ function DeleteSign(){
         }
     } else if(checkLength == 1){
     document.getElementById("equation").innerHTML = 0;
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
     if($convertedEquation.startsWith("0") == false){
     $parenthesesOn = 0;
     console.log("All Numbers Have Been Deleted.");   
@@ -267,11 +390,14 @@ function DeleteSign(){
 }
 function ClearSign(){
     ToConvertEquation();
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForFonts();
     if($convertedEquation.startsWith("0") == false){
     document.getElementById("equation").style.fontSize = "40px";
     document.getElementById("equation").style.marginBottom = "0px";
     document.getElementById("equation").innerHTML = 0; 
-    document.getElementById("result").innerHTML = "ㅤ";
+    document.getElementById("result").innerHTML = " ";
     $parenthesesOn = 0;
     console.log("All Numbers Have Been Deleted.");
     }
@@ -280,121 +406,80 @@ function ClearSign(){
 function Nzero(){
     ToConvertEquation();
     ToAddNumber(0);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function None(){
     ToConvertEquation();
     ToAddNumber(1);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Ntwo(){
     ToConvertEquation();
     ToAddNumber(2);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nthree(){
     ToConvertEquation();
     ToAddNumber(3);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nfour(){
     ToConvertEquation();
     ToAddNumber(4);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nfive(){
     ToConvertEquation();
     ToAddNumber(5);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nsix(){
     ToConvertEquation();
     ToAddNumber(6);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nseven(){
     ToConvertEquation();
     ToAddNumber(7);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Neight(){
     ToConvertEquation();
     ToAddNumber(8);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
 function Nnine(){
     ToConvertEquation();
     ToAddNumber(9);
+    ToCheckIfNoSign();
+    ToCheckIfSignEnd();
+    ToCheckForEquals();
+    ToCheckForFonts();
 }
-
-/* Checks For Fonts */
-setInterval(function () { 
-    ToConvertEquation();
-    let checkLength = $convertedEquation.length;
-    switch (checkLength){
-        case 24:
-        document.getElementById("equation").innerHTML = $convertedEquation.slice(0,-1);
-        break;
-        case 15:
-        document.getElementById("equation").style.fontSize = "25px";
-        document.getElementById("equation").style.marginBottom = "26px";
-        break;
-        case 14:
-        document.getElementById("equation").style.fontSize = "40px";
-        document.getElementById("equation").style.marginBottom = "0px";     
-        break;
-    }  
-}, 10);
-/* Checks For Equals */
-setInterval(function () { 
-    ToConvertEquation();
-    ToCheckEquationStartsPN();
-    CheckEquationIncludesSigns();
-    let checkEquationStartsPoint = $convertedEquation.startsWith("0.");
-    switch ($checkEquationIncludesSigns){
-        case true:
-            if ($convertedEquation.endsWith(".") == true){
-            document.getElementById("result").innerHTML = " ";
-            document.getElementById("result").style.marginBottom = "120px";
-            break;
-            }
-        case true:
-            if($checkEquationStartsPN == true){
-            document.getElementById("result").innerHTML = eval($convertedEquation);
-            document.getElementById("result").style.marginBottom = "36px";
-            break;
-            }
-        case true:
-            if (checkEquationStartsPoint == true){
-            document.getElementById("result").innerHTML = " ";
-            document.getElementById("result").style.marginBottom = "80px";
-            break;
-            }
-        case true:
-            if ($convertedEquation.startsWith("-") == false){
-                document.getElementById("result").innerHTML = eval($convertedEquation);
-                document.getElementById("result").style.marginBottom = "36px";
-            break;
-            }
-        case true:
-            if ($convertedEquation.startsWith("-") == true){
-                document.getElementById("result").innerHTML = " ";
-                document.getElementById("result").style.marginBottom = "80px";
-            break;
-            }    
-        }
-}, 10);
-/* Checks For Equals If No Sign */
-setInterval(function () { 
-    ToConvertEquation();
-    let checkEquationIncludes = $convertedEquation.includes("+") || 
-    $convertedEquation.includes("-") || 
-    $convertedEquation.includes("*") ||
-    $convertedEquation.includes(".") ||
-    $convertedEquation.includes("/") ||
-    $convertedEquation.includes("%");
-    if (checkEquationIncludes == false){
-        document.getElementById("result").innerHTML = "ㅤ",
-        document.getElementById("result").style.marginBottom = "0px"}
-}, 10);
-
-/* Checks For Equals If There Is a Sign In The End */
-setInterval(function () { 
-    ToConvertEquation();
-    ToCheckEquationEnd();
-    if ($checkEquationEnd == true){
-    document.getElementById("result").innerHTML = "ㅤ",
-    document.getElementById("result").style.marginBottom = "0px"}
-}, 10);
-
